@@ -1,4 +1,5 @@
 import React from "react";
+import TodoForm from "./components/TodoComponents/TodoForm";
 
 const todoData = [
   {
@@ -24,17 +25,24 @@ class App extends React.Component {
       todo: todoData
     };
   }
-  onSubmit = () => {
-    console.log("Submit button pressed");
-  };
-  addItem = () => {
-    console.log("Item added on pressed");
+
+  addTask = taskName => {
+    const newTask = {
+      name: taskName,
+      ID: Date.now(),
+      completed: false
+    };
+    this.setState({
+      todoData: [...this.state.todo, newTask]
+    });
+    console.log(this.state.todo, "New Task has been added");
   };
 
   render() {
     return (
       <div>
         <h2>Welcome to your Todo App!</h2>
+        <TodoForm addTask={this.addTask} />
       </div>
     );
   }
