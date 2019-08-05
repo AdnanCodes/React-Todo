@@ -2,9 +2,16 @@
 // feel free to change this component.js into TodoList.js
 
 import React from "react";
+import Todo from "./Todo";
 
 const TodoList = props => {
-  return <div className="todo-list">props.todoData.map(item =>)</div>;
+  return (
+    <div className="todo-list">
+      {props.todo.map((task, id) => (
+        <Todo item={task} key={id} toggleItem={props.toggleItem} />
+      ))}
+    </div>
+  );
 };
 
 export default TodoList;
